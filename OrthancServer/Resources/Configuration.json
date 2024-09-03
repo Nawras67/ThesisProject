@@ -1,0 +1,123 @@
+{
+  "Name" : "MyOrthanc",
+
+  "StorageDirectory" : "OrthancStorage",
+
+  "IndexDirectory" : "OrthancStorage",
+
+  // HTTP //
+
+  "HttpServerEnabled" : true,
+
+
+  "OrthancExplorerEnabled" : true,
+
+
+  "HttpPort" : 8040,
+
+
+  "HttpDescribeErrors" : true,
+
+
+  "HttpCompressionEnabled" : false,
+
+  "WebDavEnabled" : true,
+
+  
+  "WebDavDeleteAllowed" : false,
+
+  "WebDavUploadAllowed" : true,
+
+  "RemoteAccessAllowed" : true,
+
+  "AuthenticationEnabled" : true,
+   
+
+  "RegisteredUsers" : {
+   "test":"teeest",
+   "ABC":"ABC"  
+  },
+
+
+// DICOM //
+
+"DicomServerEnabled" : true,
+
+"DicomAet" : "ORTHANC",
+
+
+"DicomCheckCalledAet" : false,
+
+"DicomPort" : 104,
+
+
+"DefaultEncoding" : "Latin1",
+
+"AcceptedTransferSyntaxes" : [ "1.2.840.10008.1.*" ],
+
+
+"UnknownSopClassAccepted" : false,
+
+"DicomScpTimeout" : 30,
+
+"DicomAlwaysAllowEcho" : true,
+
+  // Whether the Orthanc SCP allows incoming C-STORE requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above)
+  "DicomAlwaysAllowStore" : true,
+
+  // Whether the Orthanc SCP allows incoming C-FIND requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Setting this
+  // option to "true" implies security risks. (new in Orthanc 1.9.0)
+  // Note: From Orthanc 1.10.0, this option only applies to C-FIND
+  // requests for patients/studies/series/instances. Use option
+  // "DicomAlwaysAllowFindWorklist" for worklists.
+  "DicomAlwaysAllowFind" : false,
+
+  // Whether the Orthanc SCP allows incoming C-FIND requests for worklists, 
+  // even from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Setting this
+  // option to "true" implies security risks. (new in Orthanc 1.10.0)
+  "DicomAlwaysAllowFindWorklist" : false,
+
+  // Whether the Orthanc SCP allows incoming C-GET requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Setting this
+  // option to "true" implies security risks. (new in Orthanc 1.9.0)
+  "DicomAlwaysAllowGet" : false,
+
+  // Whether the Orthanc SCP allows incoming C-MOVE requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Setting this
+  // option to "true" implies security risks. (new in Orthanc 1.9.7)
+  "DicomAlwaysAllowMove" : false,
+
+  // Whether Orthanc checks the IP/hostname address of the remote
+  // modality initiating a DICOM connection (as listed in the
+  // "DicomModalities" option above). If this option is set to
+  // "false", Orthanc only checks the AET of the remote modality.
+  "DicomCheckModalityHost" : false,
+
+
+
+  /**
+   * Network topology
+   **/
+
+  // The list of the known DICOM modalities. This option is ignored if
+  // "DicomModalitiesInDatabase" is set to "true", in which case you
+  // must use the REST API to define modalities.
+  "DicomModalities" : {
+    "remote_dicom": [
+    { "Aet": "test", "Host": "localhost", "Port": 11112 }
+  ],
+
+     "sample" : [ "STORESCP", "localhost", 11112 ]
+
+    
+  }
+
+
+}
